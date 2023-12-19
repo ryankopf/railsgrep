@@ -17,7 +17,7 @@ Railsgrep is a command-line tool written in Rust, designed for searching specifi
 ### Building from Source
 
 ```sh
-git clone https://your-repository-url/railsgrep.git
+git clone https://github.com/ryankopf/railsgrep.git
 cd railsgrep
 cargo build --release
 sudo mv target/release/railsgrep /usr/local/bin/
