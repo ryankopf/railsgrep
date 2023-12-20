@@ -38,3 +38,35 @@ railsgrep ./logs 'ERROR'
 ```
 
 This command will search through all files in the ./logs directory (and subdirectories) for the pattern 'ERROR', extract tags from matching lines, and then print all lines containing these tags.
+
+
+
+## Use Case
+
+Rails logs contain lines like:
+```
+[019b0183-9f1c-11ef-b1f1-81ed7c584657] [51.222.253.13] Completed 200 OK in 27ms (Views: 15.4ms | ActiveRecord: 8.3ms | Allocations: 11936)
+[21b001a3-72ca-414e-b13c-a175bdf3a766] [185.191.171.14] Started GET "/topics/340/topics/42581?page=1" for 185.191.171.14 at 2023-12-20 20:03:53 +0000
+[21b001a3-72ca-414e-b13c-a175bdf3a766] [185.191.171.14] Processing by TopicsController#show as HTML
+```
+
+Sometimes these lines will be mixed up, like:
+```
+[21b001a3-72ca-414e-b13c-a175bdf3a766] [185.191.171.14] Started GET "/topics/340/topics/42581?page=1" for 185.191.171.14 at 2023-12-20 20:03:53 +0000
+[019b0183-9f1c-11ef-b1f1-81ed7c584657] [51.222.253.13] Completed 200 OK in 27ms (Views: 15.4ms | ActiveRecord: 8.3ms | Allocations: 11936)
+[21b001a3-72ca-414e-b13c-a175bdf3a766] [185.191.171.14] Processing by TopicsController#show as HTML
+```
+
+Or sometimes you may have accidentally logged newline characters:
+```
+[21b001a3-72ca-414e-b13c-a175bdf3a766] [185.191.171.14] Received from payment processor {
+    name: 'John',
+    card_id: '1234567'
+}
+```
+
+But you need to search for "payment processor". You can use railsgreg to find these lines.
+
+```
+railsgrep ./log/ 'payment processor'
+```

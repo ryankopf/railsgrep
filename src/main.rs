@@ -37,8 +37,14 @@ fn main() {
     for tag in tags.iter() {
         visit_dirs(Path::new(path), &mut |entry| {
             let content = read_file_content(&entry.path());
+            let mut found_tag_in_previous_line = false;
             for line in content.lines() {
                 if line.contains(tag) {
+                    println!("[{}] {}", entry.path().display(), line);
+                    found_tag_in_previous_line = true;
+                } else if tag_regex.is_match(line) {
+                    found_tag_in_previous_line = false;
+                } else if found_tag_in_previous_line {
                     println!("[{}] {}", entry.path().display(), line);
                 }
             }
