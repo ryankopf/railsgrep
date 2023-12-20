@@ -45,21 +45,21 @@ This command will search through all files in the ./logs directory (and subdirec
 
 Rails logs contain lines like:
 ```
-[019b0183-9f1c-11ef-b1f1-81ed7c584657] [51.222.253.13] Completed 200 OK in 27ms (Views: 15.4ms | ActiveRecord: 8.3ms | Allocations: 11936)
-[21b001a3-72ca-414e-b13c-a175bdf3a766] [185.191.171.14] Started GET "/topics/340/topics/42581?page=1" for 185.191.171.14 at 2023-12-20 20:03:53 +0000
-[21b001a3-72ca-414e-b13c-a175bdf3a766] [185.191.171.14] Processing by TopicsController#show as HTML
+[019b0183-9f1c-11ef-b1f1-81ed7c584657] [50.222.253.13] Completed 200 OK in 27ms (Views: 15.4ms | ActiveRecord: 8.3ms | Allocations: 11936)
+[21b001a3-72ca-414e-b13c-a175bdf3a766] [125.125.171.14] Started GET "/topics/340/topics/42581?page=1" for 185.191.171.14 at 2023-12-20 20:03:53 +0000
+[21b001a3-72ca-414e-b13c-a175bdf3a766] [125.125.171.14] Processing by TopicsController#show as HTML
 ```
 
 Sometimes these lines will be mixed up, like:
 ```
-[21b001a3-72ca-414e-b13c-a175bdf3a766] [185.191.171.14] Started GET "/topics/340/topics/42581?page=1" for 185.191.171.14 at 2023-12-20 20:03:53 +0000
-[019b0183-9f1c-11ef-b1f1-81ed7c584657] [51.222.253.13] Completed 200 OK in 27ms (Views: 15.4ms | ActiveRecord: 8.3ms | Allocations: 11936)
-[21b001a3-72ca-414e-b13c-a175bdf3a766] [185.191.171.14] Processing by TopicsController#show as HTML
+[21b001a3-72ca-414e-b13c-a175bdf3a766] [125.125.171.14] Started GET "/topics/340/topics/42581?page=1" for 185.191.171.14 at 2023-12-20 20:03:53 +0000
+[019b0183-9f1c-11ef-b1f1-81ed7c584657] [50.222.253.13] Completed 200 OK in 27ms (Views: 15.4ms | ActiveRecord: 8.3ms | Allocations: 11936)
+[21b001a3-72ca-414e-b13c-a175bdf3a766] [125.125.171.14] Processing by TopicsController#show as HTML
 ```
 
 Or sometimes you may have accidentally logged newline characters:
 ```
-[21b001a3-72ca-414e-b13c-a175bdf3a766] [185.191.171.14] Received from payment processor {
+[21b001a3-72ca-414e-b13c-a175bdf3a766] [125.125.171.14] Received from payment processor {
     name: 'John',
     card_id: '1234567'
 }
